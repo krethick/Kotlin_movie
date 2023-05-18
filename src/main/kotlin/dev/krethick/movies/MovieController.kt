@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController
 @RequestMapping("/api/v1/movies")
 class MovieController {
     @GetMapping
-    fun allMovies(): ResponseEntity<String> {
+    fun getallMovies(): ResponseEntity<String> {
         return ResponseEntity("All Movies!", HttpStatus.OK);
     }
 }
