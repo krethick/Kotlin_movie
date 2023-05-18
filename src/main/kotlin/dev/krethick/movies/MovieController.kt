@@ -20,4 +20,5 @@ class MovieController {
 
 // ResponseEntity<String> is a generic type
 // HttpStatus.OK means 200
+// Invoke-WebRequest -Uri "http://localhost:8080/api/v1/movies" used it in windows powershell to find out the status code
 
