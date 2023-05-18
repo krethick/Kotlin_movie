@@ -1,5 +1,5 @@
 package dev.krethick.movies
-
+import org.bson.types.ObjectId // ObjectId class is part of the MongoDB Java Driver, which is not a built-in class in Kotlin.
 import lombok.AllArgsConstructor
 import lombok.Data
 import lombok.NoArgsConstructor
@@ -12,7 +12,7 @@ import org.springframework.data.mongodb.core.mapping.Document
 @Data    // comes from lombok header file (Use getter,setter and string methods)
 @AllArgsConstructor   // Takes all private field as argument
 @NoArgsConstructor // Takes no arguments/parameters
-class Movie {
+public class Movie {
     //Also annotate the id field
     @Id
     // The ? after ObjectId indicates that the id variable can hold an ObjectId value or be null.
