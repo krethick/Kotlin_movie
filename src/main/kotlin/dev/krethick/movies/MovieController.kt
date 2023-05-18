@@ -1,4 +1,5 @@
 package dev.krethick.movies
+import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.GetMapping
@@ -11,10 +12,19 @@ import org.springframework.web.bind.annotation.RestController
 @RestController
 //The @RequestMapping annotation is used at the method level to map specific HTTP methods and their corresponding endpoint paths.
 @RequestMapping("/api/v1/movies")
+
+
 class MovieController {
+
+    //We'll be requiring the reference of the service class
+    @Autowired
+
+    private var movieService: MovieService? = null
+
+
     @GetMapping
-    fun getallMovies(): ResponseEntity<String> {
-        return ResponseEntity("All Movies!", HttpStatus.OK);
+    fun getAllMovies(): ResponseEntity<List<Movie>> {
+        return ResponseEntity<List<Movie>>(movieService?.allMovies(), HttpStatus.OK);
     }
 }
 
