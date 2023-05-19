@@ -18,7 +18,7 @@ public class Movie (
     @Id
     // The ? after ObjectId indicates that the id variable can hold an ObjectId value or be null.
     var id: ObjectId = ObjectId(),
-    var imbId: String = "",
+    var imdbId: String = "",
     var title: String = "",
     var releaseDate: String = "",
     var trailerLink: String = "",

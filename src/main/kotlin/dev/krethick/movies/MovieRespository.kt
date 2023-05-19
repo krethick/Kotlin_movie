@@ -3,6 +3,7 @@ package dev.krethick.movies
 import org.bson.types.ObjectId
 import org.springframework.data.mongodb.repository.MongoRepository
 import org.springframework.stereotype.Repository
+import java.util.*
 
 // Repository are of type interface
 // MongoRepository is of the type generic
@@ -10,11 +11,9 @@ import org.springframework.stereotype.Repository
 @Repository
 public interface MovieRespository : MongoRepository<Movie,ObjectId>
 {
+    fun findMovieByImdbId(imdbId: String): Optional<Movie>
 
 }
-
-
-
 
 
 /*Why Repository are of type interface?
