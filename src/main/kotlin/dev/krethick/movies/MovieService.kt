@@ -1,13 +1,11 @@
 package dev.krethick.movies
 
+import org.bson.types.ObjectId
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
+import java.util.Optional
 
-
-// Import the Movie class
-import dev.krethick.movies.Movie
-
-
+//Here only most of the business class is implemented.
 @Service
 class MovieService {
     // We write database access methods
@@ -18,6 +16,10 @@ class MovieService {
     public fun allMovies(): List<Movie> {
         return movieRespository.findAll()
     }
+
+    public fun singleMovie(id: ObjectId): Optional<Movie> {
+        return movieRespository.findById(id)
+    }
+
 }
 
-//Start at 1:03:27

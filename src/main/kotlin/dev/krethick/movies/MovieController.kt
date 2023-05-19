@@ -1,10 +1,13 @@
 package dev.krethick.movies
+import org.bson.types.ObjectId
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.GetMapping
+import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
+import java.util.Optional
 
 // Controller = a controller is a key component of the MVC-(model view controller) architecture that handles HTTP requests and
 // defines the behavior and operations for specific endpoints or URLs.
@@ -19,13 +22,18 @@ class MovieController {
     //We'll be requiring the reference of the service class
     @Autowired
 
+    //Service class = delegating the task of getting the details from the database
     private lateinit var movieService: MovieService
-
-
-
     @GetMapping
+    //Api layer
+    //Getting the request from the user and Returning response
     fun getAllMovies(): ResponseEntity<List<Movie>> {
         return ResponseEntity<List<Movie>>(movieService.allMovies(), HttpStatus.OK);
+    }
+
+    @GetMapping("/{id}")
+    fun getSingleMovie(@PathVariable id: ObjectId): ResponseEntity<Optional<Movie>> {
+        return ResponseEntity<Optional<Movie>>(movieService.singleMovie(id), HttpStatus.OK);
     }
 }
 
