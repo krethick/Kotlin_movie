@@ -18,4 +18,6 @@ public class Review (
     private var body: String = "",
 
 
-)
+){
+    constructor(body: String) : this(ObjectId(), body)
+}
