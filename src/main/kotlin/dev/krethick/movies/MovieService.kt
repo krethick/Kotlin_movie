@@ -3,6 +3,7 @@ package dev.krethick.movies
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 
+
 // Import the Movie class
 import dev.krethick.movies.Movie
 
@@ -11,9 +12,12 @@ import dev.krethick.movies.Movie
 class MovieService {
     // We write database access methods
     @Autowired
-    private var movieRespository: MovieRespository? = null
+    private lateinit var movieRespository: MovieRespository
 
-    fun allMovies(): List<Movie> {
-        return movieRespository?.findAll() ?: emptyList()
+
+    public fun allMovies(): List<Movie> {
+        return movieRespository.findAll()
     }
 }
+
+//Start at 1:03:27

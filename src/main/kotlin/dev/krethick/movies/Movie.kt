@@ -5,6 +5,7 @@ import lombok.Data
 import lombok.NoArgsConstructor
 import org.springframework.data.annotation.Id
 import org.springframework.data.mongodb.core.mapping.Document
+import org.springframework.data.mongodb.core.mapping.DocumentReference
 
 
 //We need to annotate as document
@@ -12,17 +13,21 @@ import org.springframework.data.mongodb.core.mapping.Document
 @Data    // comes from lombok header file (Use getter,setter and string methods)
 @AllArgsConstructor   // Takes all private field as argument
 @NoArgsConstructor // Takes no arguments/parameters
-public class Movie {
+public class Movie (
     //Also annotate the id field
     @Id
     // The ? after ObjectId indicates that the id variable can hold an ObjectId value or be null.
-    private var id: ObjectId? = null
-    private var imbId: String? = null
-    private var title: String? = null
-    private var releaseDate: String? = null
-    private var trailerLink: String? = null
-    private var poster: String? = null
-    private var genres: List<String>? = null
-    private var backdrops: List<String>? = null
+    var id: ObjectId = ObjectId(),
+    var imbId: String = "",
+    var title: String = "",
+    var releaseDate: String = "",
+    var trailerLink: String = "",
+    var poster: String = "",
+    var genres: MutableList<String> = mutableListOf(),
+    var backdrops: MutableList<String> = mutableListOf(),
 
-}
+
+    @DocumentReference
+    private var reviewIds: MutableList<Review> = mutableListOf()
+
+)

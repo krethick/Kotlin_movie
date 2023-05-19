@@ -19,12 +19,13 @@ class MovieController {
     //We'll be requiring the reference of the service class
     @Autowired
 
-    private var movieService: MovieService? = null
+    private lateinit var movieService: MovieService
+
 
 
     @GetMapping
     fun getAllMovies(): ResponseEntity<List<Movie>> {
-        return ResponseEntity<List<Movie>>(movieService?.allMovies(), HttpStatus.OK);
+        return ResponseEntity<List<Movie>>(movieService.allMovies(), HttpStatus.OK);
     }
 }
 

@@ -11,9 +11,11 @@ import org.springframework.data.mongodb.core.mapping.Document
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Review {
+public class Review (
 
     @Id
-    private var id: ObjectId? = null
-    private var body:String? = null
-}
+    private var id: ObjectId = ObjectId(),
+    private var body: String = "",
+
+
+)
